@@ -1,70 +1,178 @@
-package com.example.ubp_calendario1
+package com.example.upb_calendario1
 
-import com.example.upb_calendario1.AdminRequest
-import com.example.upb_calendario1.AdminResponse
-import com.example.upb_calendario1.CalendarioRequest
-import com.example.upb_calendario1.CalendarioResponse
-import com.example.upb_calendario1.CarreraRequest
-import com.example.upb_calendario1.CarreraResponse
-import com.example.upb_calendario1.DocumentoRequest
-import com.example.upb_calendario1.DocumentoResponse
-import com.example.upb_calendario1.EventoCalendarioRequest
-import com.example.upb_calendario1.EventoCalendarioResponse
-import com.example.upb_calendario1.HorarioMateriaRequest
-import com.example.upb_calendario1.HorarioMateriaResponse
-import com.example.upb_calendario1.InscripcionesRequest
-import com.example.upb_calendario1.InscripcionesResponse
-import com.example.upb_calendario1.MateriaRequest
-import com.example.upb_calendario1.MateriaResponse
-import com.example.upb_calendario1.ModuloRequest
-import com.example.upb_calendario1.ModuloResponse
-import com.example.upb_calendario1.PlanEstudioMateriaRequest
-import com.example.upb_calendario1.PlanEstudioMateriaResponse
-import com.example.upb_calendario1.PlanEstudioRequest
-import com.example.upb_calendario1.PlanEstudioResponse
-import com.example.upb_calendario1.UsuarioRequest
-import com.example.upb_calendario1.UsuarioResponse
-import retrofit2.Call
-import retrofit2.http.Body
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.*
-import retrofit2.http.*
+import kotlin.jvm.java
+
 
 interface ApiService {
+    @GET("api/carreras")
+    suspend fun getCarreras(): Response<RespuestaCarreras>
 
-    @POST("carreras")
-    fun crearCarrera(@Body request: CarreraRequest): Call<CarreraResponse>
+    @FormUrlEncoded
+    @POST("api/carreras")
+    suspend fun crearCarrera(
+        @Field("nombre") nombre: String,
+        @Field("facultad") facultad: String
+    ): Response<CarreraResponse>
 
-    @POST("admins")
-    fun crearAdmin(@Body request: AdminRequest): Call<AdminResponse>
+    @GET("api/admins")
+    suspend fun getAdmins(): Response<RespuestaAdmins>
 
-    @POST("modulos")
-    fun crearModulo(@Body request: ModuloRequest): Call<ModuloResponse>
+    @FormUrlEncoded
+    @POST("api/admins")
+    suspend fun crearAdmin(
+        @Field("nombre") nombre: String,
+        @Field("correo") correo: String,
+        @Field("contrasena") contrasena: String
+    ): Response<AdminResponse>
 
-    @POST("usuarios")
-    fun crearUsuario(@Body request: UsuarioRequest): Call<UsuarioResponse>
+    @GET("api/modulos")
+    suspend fun getModulos(): Response<RespuestaModulos>
 
-    @POST("materias")
-    fun crearMateria(@Body request: MateriaRequest): Call<MateriaResponse>
+    @FormUrlEncoded
+    @POST("api/modulos")
+    suspend fun crearModulo(
+        @Field("nombre") nombre: String,
+        @Field("numero_modulo") numero_modulo: Int,
+        @Field("fecha_inicio") fecha_inicio: String,
+        @Field("fecha_fin") fecha_fin: String
+    ): Response<ModuloResponse>
 
-    @POST("documentos")
-    fun crearDocumento(@Body request: DocumentoRequest): Call<DocumentoResponse>
+    @GET("api/usuarios")
+    suspend fun getUsuarios(): Response<RespuestaUsuarios>
 
-    @POST("inscripciones")
-    fun crearInscripcion(@Body request: InscripcionesRequest): Call<InscripcionesResponse>
+    @FormUrlEncoded
+    @POST("api/usuarios")
+    suspend fun crearUsuario(
+        @Field("cod_est_upb") cod_est_upb: String,
+        @Field("nombre") nombre: String,
+        @Field("apellido") apellido: String,
+        @Field("edad") edad: Int,
+        @Field("correo") correo: String,
+        @Field("contrasena") contrasena: String,
+        @Field("id_carrera") id_carrera: Int
+    ): Response<UsuarioResponse>
 
-    @POST("horario-materia")
-    fun crearHorarioMateria(@Body request: HorarioMateriaRequest): Call<HorarioMateriaResponse>
+    @GET("api/materias")
+    suspend fun getMaterias(): Response<RespuestaMaterias>
 
-    @POST("calendarios")
-    fun crearCalendario(@Body request: CalendarioRequest): Call<CalendarioResponse>
+    @FormUrlEncoded
+    @POST("api/materias")
+    suspend fun crearMateria(
+        @Field("nombre") nombre: String,
+        @Field("creditos") creditos: Int,
+        @Field("duracion_semanas") duracion_semanas: Int,
+        @Field("tipo_materia") tipo_materia: String,
+        @Field("id_modulo") id_modulo: Int,
+        @Field("id_admin") id_admin: Int
+    ): Response<MateriaResponse>
 
-    @POST("eventos-calendarios")
-    fun crearEventoCalendario(@Body request: EventoCalendarioRequest): Call<EventoCalendarioResponse>
+    @GET("api/documentos")
+    suspend fun getDocumentos(): Response<RespuestaDocumentos>
 
-    @POST("plan-estudios")
-    fun crearPlanEstudio(@Body request: PlanEstudioRequest): Call<PlanEstudioResponse>
+    @FormUrlEncoded
+    @POST("api/documentos")
+    suspend fun crearDocumento(
+        @Field("titulo") titulo: String,
+        @Field("tipo_documento") tipo_documento: String,
+        @Field("descripcion") descripcion: String,
+        @Field("url_archivo") url_archivo: String,
+        @Field("id_materia") id_materia: Int,
+        @Field("id_admin") id_admin: Int
+    ): Response<DocumentoResponse>
 
-    @POST("plan-estudio-materia")
-    fun crearPlanEstudioMateria(@Body request: PlanEstudioMateriaRequest): Call<PlanEstudioMateriaResponse>
+    @GET("api/inscripciones")
+    suspend fun getInscripciones(): Response<RespuestaInscripciones>
+
+    @FormUrlEncoded
+    @POST("api/inscripciones")
+    suspend fun crearInscripcion(
+        @Field("fecha_inscripcion") fecha_inscripcion: String,
+        @Field("estado") estado: String,
+        @Field("nota_final") nota_final: String,
+        @Field("cod_est_upb") cod_est_upb: String,
+        @Field("id_materia") id_materia: Int
+    ): Response<InscripcionesResponse>
+
+    @GET("api/horario-materia")
+    suspend fun getHorarioMateria(): Response<RespuestaHorarioMateria>
+
+    @FormUrlEncoded
+    @POST("api/horario-materia")
+    suspend fun crearHorarioMateria(
+        @Field("dia_semana") dia_semana: String,
+        @Field("hora_inicio") hora_inicio: String,
+        @Field("hora_fin") hora_fin: String,
+        @Field("aula") aula: String,
+        @Field("id_materia") id_materia: Int
+    ): Response<HorarioMateriaResponse>
+
+    @GET("api/calendarios")
+    suspend fun getCalendarios(): Response<RespuestaCalendarios>
+
+    @FormUrlEncoded
+    @POST("api/calendarios")
+    suspend fun crearCalendario(
+        @Field("cod_est_upb") cod_est_upb: String
+    ): Response<CalendarioResponse>
+
+    @GET("api/eventos-calendarios")
+    suspend fun getEventosCalendarios(): Response<RespuestaEventosCalendarios>
+
+    @FormUrlEncoded
+    @POST("api/eventos-calendarios")
+    suspend fun crearEventoCalendario(
+        @Field("titulo") titulo: String,
+        @Field("descripcion") descripcion: String,
+        @Field("tipo_evento") tipo_evento: String,
+        @Field("fecha_inicio") fecha_inicio: String,
+        @Field("fecha_fin") fecha_fin: String,
+        @Field("es_recurrente") es_recurrente: Int,
+        @Field("id_calendario") id_calendario: Int,
+        @Field("id_materia") id_materia: Int
+    ): Response<EventoCalendarioResponse>
+
+    @GET("api/plan-estudios")
+    suspend fun getPlanesEstudio(): Response<RespuestaPlanesEstudio>
+
+    @FormUrlEncoded
+    @POST("api/plan-estudios")
+    suspend fun crearPlanEstudio(
+        @Field("nombre") nombre: String,
+        @Field("intensidad") intensidad: String,
+        @Field("horas_disponibles_semana") horas_disponibles_semana: Int,
+        @Field("rendimiento_objetivo") rendimiento_objetivo: String,
+        @Field("fecha_inicio") fecha_inicio: String,
+        @Field("fecha_fin") fecha_fin: String,
+        @Field("cod_est_upb") cod_est_upb: String
+    ): Response<PlanEstudioResponse>
+
+    @GET("api/plan-estudio-materia")
+    suspend fun getPlanEstudioMateria(): Response<RespuestaPlanEstudioMateria>
+
+    @FormUrlEncoded
+    @POST("api/plan-estudio-materia")
+    suspend fun crearPlanEstudioMateria(
+        @Field("horas_asignadas") horas_asignadas: Int,
+        @Field("prioridad") prioridad: Int,
+        @Field("id_plan") id_plan: Int,
+        @Field("id_materia") id_materia: Int
+    ): Response<PlanEstudioMateriaResponse>
+
+object RetrofitClient {
+    fun create(): com.example.upb_calendario1.ApiService {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://192.168.3.162/upb_calendario/public/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(com.example.upb_calendario1.ApiService::class.java)
+    }
+}
 }
