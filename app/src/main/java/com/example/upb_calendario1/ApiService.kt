@@ -3,10 +3,14 @@ package com.example.upb_calendario1
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
 import kotlin.jvm.java
 
 
@@ -20,6 +24,17 @@ interface ApiService {
         @Field("nombre") nombre: String,
         @Field("facultad") facultad: String
     ): Response<CarreraResponse>
+
+    @PATCH("api/carreras/{id}")
+    suspend fun actualizarCarrera(
+        @Path("id") id: Int,
+        @Body request: CarreraUpdateRequest
+    ): Response<CarreraResponse>
+
+    @DELETE("api/carreras/{id}")
+    suspend fun eliminarCarrera(
+        @Path("id") id: Int
+    ): Response<Unit>
 
     @GET("api/admins")
     suspend fun getAdmins(): Response<RespuestaAdmins>
@@ -168,7 +183,7 @@ interface ApiService {
 object RetrofitClient {
     fun create(): com.example.upb_calendario1.ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.3.162/upb_calendario/public/")
+            .baseUrl("http://172.16.73.33/upb_calendario/public/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
