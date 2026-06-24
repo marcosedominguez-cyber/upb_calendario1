@@ -74,6 +74,12 @@ interface ApiService {
         @Field("id_carrera") id_carrera: Int
     ): Response<UsuarioResponse>
 
+    @PATCH("api/usuarios/{cod_est_upb}")
+    suspend fun actualizarUsuario(
+        @Path("cod_est_upb") codEstUpb: String,
+        @Body request: UsuarioRequest
+    ): Response<UsuarioResponse>
+
     @GET("api/materias")
     suspend fun getMaterias(): Response<RespuestaMaterias>
 
@@ -115,6 +121,17 @@ interface ApiService {
         @Field("id_materia") id_materia: Int
     ): Response<InscripcionesResponse>
 
+    @PATCH("api/inscripciones/{id}")
+    suspend fun actualizarInscripcion(
+        @Path("id") id: Int,
+        @Body request: InscripcionesRequest
+    ): Response<InscripcionesResponse>
+
+    @DELETE("api/inscripciones/{id}")
+    suspend fun eliminarInscripcion(
+        @Path("id") id: Int
+    ): Response<Unit>
+
     @GET("api/horario-materia")
     suspend fun getHorarioMateria(): Response<RespuestaHorarioMateria>
 
@@ -153,6 +170,17 @@ interface ApiService {
         @Field("id_materia") id_materia: Int
     ): Response<EventoCalendarioResponse>
 
+    @PATCH("api/eventos-calendarios/{id}")
+    suspend fun actualizarEventoCalendario(
+        @Path("id") id: Int,
+        @Body request: EventoCalendarioRequest
+    ): Response<EventoCalendarioResponse>
+
+    @DELETE("api/eventos-calendarios/{id}")
+    suspend fun eliminarEventoCalendario(
+        @Path("id") id: Int
+    ): Response<Unit>
+
     @GET("api/plan-estudios")
     suspend fun getPlanesEstudio(): Response<RespuestaPlanesEstudio>
 
@@ -168,6 +196,17 @@ interface ApiService {
         @Field("cod_est_upb") cod_est_upb: String
     ): Response<PlanEstudioResponse>
 
+    @PATCH("api/plan-estudios/{id}")
+    suspend fun actualizarPlanEstudio(
+        @Path("id") id: Int,
+        @Body request: PlanEstudioRequest
+    ): Response<PlanEstudioResponse>
+
+    @DELETE("api/plan-estudios/{id}")
+    suspend fun eliminarPlanEstudio(
+        @Path("id") id: Int
+    ): Response<Unit>
+
     @GET("api/plan-estudio-materia")
     suspend fun getPlanEstudioMateria(): Response<RespuestaPlanEstudioMateria>
 
@@ -180,10 +219,21 @@ interface ApiService {
         @Field("id_materia") id_materia: Int
     ): Response<PlanEstudioMateriaResponse>
 
+    @PATCH("api/plan-estudio-materia/{id}")
+    suspend fun actualizarPlanEstudioMateria(
+        @Path("id") id: Int,
+        @Body request: PlanEstudioMateriaRequest
+    ): Response<PlanEstudioMateriaResponse>
+
+    @DELETE("api/plan-estudio-materia/{id}")
+    suspend fun eliminarPlanEstudioMateria(
+        @Path("id") id: Int
+    ): Response<Unit>
+
 object RetrofitClient {
     fun create(): com.example.upb_calendario1.ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.16.73.33/upb_calendario/public/")
+            .baseUrl("http://192.168.3.162/upb_calendario/public/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

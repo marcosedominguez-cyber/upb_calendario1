@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F8FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <!-- ENCABEZADO -->
+        <TextView
+            android:id="@+id/txtBienvenidaUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido estudiante"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#003366"
+            android:gravity="center"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/txtFechaSeleccionada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha seleccionada:"
+            android:textSize="15sp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- CALENDARIO -->
+        <CalendarView
+            android:id="@+id/calendarUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <!-- BOTONES PRINCIPALES -->
+        <Button
+            android:id="@+id/btnMostrarPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editar usuario"
+            android:backgroundTint="#003366"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnMostrarMaterias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Materias del calendario"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#003366"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnMostrarEventos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eventos del calendario"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#003366"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnMostrarPlanes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Planes de estudio"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#003366"
+            android:textColor="#FFFFFF" />
+
+        <!-- PANEL EDITAR USUARIO -->
+        <LinearLayout
+            android:id="@+id/panelPerfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editar datos del usuario"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#003366" />
+
+            <EditText
+                android:id="@+id/edtNombreUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/edtApellidoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Apellido" />
+
+            <EditText
+                android:id="@+id/edtCorreoUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Correo"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/edtContrasenaUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/edtEdadUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Edad"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/btnGuardarUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar cambios"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#FFCC00"
+                android:textColor="#003366" />
+
+        </LinearLayout>
+
+        <!-- PANEL MATERIAS DEL CALENDARIO -->
+        <LinearLayout
+            android:id="@+id/panelMaterias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Materias en mi calendario"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#003366" />
+
+            <EditText
+                android:id="@+id/edtIdMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID materia calendario"
+                android:inputType="number"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/edtNombreMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de materia" />
+
+            <EditText
+                android:id="@+id/edtHoraMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hora ejemplo: 08:00 - 10:00" />
+
+            <EditText
+                android:id="@+id/edtAulaMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Aula o ubicación" />
+
+            <Button
+                android:id="@+id/btnAgregarMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar materia"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#003366"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnEditarMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editar materia"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#FFCC00"
+                android:textColor="#003366" />
+
+            <Button
+                android:id="@+id/btnEliminarMateriaCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eliminar materia"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#CC0000"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <!-- PANEL EVENTOS -->
+        <LinearLayout
+            android:id="@+id/panelEventos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginTop="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eventos del calendario"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#003366" />
+
+            <EditText
+                android:id="@+id/edtIdEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ID evento"
+                android:inputType="number"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/edtTituloEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Título del evento" />
+
+            <EditText
+                android:id="@+id/edtDescripcionEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Descripción" />
+
+            <EditText
+                android:id="@+id/edtHoraEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Hora ejemplo: 15:00" />
+
+            <Button
+                android:id="@+id/btnAgregarEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar evento"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#003366"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnEditarEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editar evento"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#FFCC00"
+                android:textColor="#003366" />
+
+            <Button
+                android:id="@+id/btnEliminarEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Eliminar evento"
+                android:layout_marginTop="6dp"
+                android:backgroundTint="#CC0000"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <!-- PANEL PLANES DE ESTUDIO -->
+        <LinearLayout
+            android:id="@+id/panelPlanes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Planes de estudio"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#003366" />
+
+            <EditText
+                android:id="@+id/edtNombrePlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del plan"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/edtMateriaPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Materia" />
+
+            <EditText
+                android:id="@+id/edtHorasPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Horas de estudio por día"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/edtObjetivoPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Objetivo del plan" />
+
+            <Button
+                android:id="@+id/btnAgregarPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar plan de estudio"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="#003366"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtResultadoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#003366"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:backgroundTint="#666666"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+</ScrollView>
