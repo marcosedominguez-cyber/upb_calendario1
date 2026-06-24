@@ -119,6 +119,11 @@ interface ApiService {
         @Field("id_admin") id_admin: Int
     ): Response<DocumentoResponse>
 
+    @DELETE("api/documentos/{id}")
+    suspend fun eliminarDocumento(
+        @Path("id") id: Int
+    ): Response<Unit>
+
     @GET("api/inscripciones")
     suspend fun getInscripciones(): Response<RespuestaInscripciones>
 
