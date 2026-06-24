@@ -41,6 +41,18 @@
             android:background="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
+        <!-- RESUMEN DEL DÍA -->
+        <TextView
+            android:id="@+id/txtMateriasDelDia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resumen del día seleccionado: selecciona una fecha."
+            android:textSize="16sp"
+            android:textColor="#003366"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:layout_marginBottom="16dp" />
+
         <!-- BOTONES PRINCIPALES -->
         <Button
             android:id="@+id/btnMostrarPerfil"
@@ -73,6 +85,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Planes de estudio"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#003366"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnVerDocumentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver documentos"
             android:layout_marginTop="8dp"
             android:backgroundTint="#003366"
             android:textColor="#FFFFFF" />
@@ -160,57 +181,36 @@
                 android:textStyle="bold"
                 android:textColor="#003366" />
 
-            <EditText
-                android:id="@+id/edtIdMateriaCalendario"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ID materia calendario"
-                android:inputType="number"
-                android:layout_marginTop="10dp" />
+                android:text="Selecciona una materia registrada en la base de datos"
+                android:textSize="14sp"
+                android:textColor="#555555"
+                android:layout_marginTop="6dp" />
 
-            <EditText
-                android:id="@+id/edtNombreMateriaCalendario"
+            <Spinner
+                android:id="@+id/spMateriasDisponibles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de materia" />
+                android:layout_marginTop="12dp" />
 
-            <EditText
-                android:id="@+id/edtHoraMateriaCalendario"
+            <TextView
+                android:id="@+id/txtHorarioMateriaSeleccionada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hora ejemplo: 08:00 - 10:00" />
-
-            <EditText
-                android:id="@+id/edtAulaMateriaCalendario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Aula o ubicación" />
+                android:text="Horario de la materia seleccionada"
+                android:textSize="15sp"
+                android:textColor="#003366"
+                android:layout_marginTop="12dp" />
 
             <Button
                 android:id="@+id/btnAgregarMateriaCalendario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Agregar materia"
-                android:layout_marginTop="10dp"
+                android:text="Agregar materia a mi calendario"
+                android:layout_marginTop="12dp"
                 android:backgroundTint="#003366"
-                android:textColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/btnEditarMateriaCalendario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Editar materia"
-                android:layout_marginTop="6dp"
-                android:backgroundTint="#FFCC00"
-                android:textColor="#003366" />
-
-            <Button
-                android:id="@+id/btnEliminarMateriaCalendario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Eliminar materia"
-                android:layout_marginTop="6dp"
-                android:backgroundTint="#CC0000"
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
@@ -234,61 +234,53 @@
                 android:textStyle="bold"
                 android:textColor="#003366" />
 
-            <EditText
-                android:id="@+id/edtIdEvento"
+            <TextView
+                android:id="@+id/txtFechaEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="ID evento"
-                android:inputType="number"
-                android:layout_marginTop="10dp" />
+                android:text="Evento para la fecha seleccionada"
+                android:textSize="15sp"
+                android:textColor="#555555"
+                android:layout_marginTop="8dp" />
 
             <EditText
                 android:id="@+id/edtTituloEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Título del evento" />
+                android:hint="Título: Examen, entrega proyecto, exposición"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/edtTipoEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tipo: examen, tarea, proyecto, recordatorio" />
 
             <EditText
                 android:id="@+id/edtDescripcionEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Descripción" />
+                android:hint="Descripción del evento" />
 
             <EditText
                 android:id="@+id/edtHoraEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hora ejemplo: 15:00" />
+                android:hint="Hora ejemplo: 15:00"
+                android:inputType="time" />
 
             <Button
                 android:id="@+id/btnAgregarEvento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Agregar evento"
+                android:text="Agregar evento a este día"
                 android:layout_marginTop="10dp"
                 android:backgroundTint="#003366"
                 android:textColor="#FFFFFF" />
 
-            <Button
-                android:id="@+id/btnEditarEvento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Editar evento"
-                android:layout_marginTop="6dp"
-                android:backgroundTint="#FFCC00"
-                android:textColor="#003366" />
-
-            <Button
-                android:id="@+id/btnEliminarEvento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Eliminar evento"
-                android:layout_marginTop="6dp"
-                android:backgroundTint="#CC0000"
-                android:textColor="#FFFFFF" />
-
         </LinearLayout>
 
+        <!-- PANEL PLANES DE ESTUDIO -->
         <!-- PANEL PLANES DE ESTUDIO -->
         <LinearLayout
             android:id="@+id/panelPlanes"
@@ -320,7 +312,23 @@
                 android:id="@+id/edtMateriaPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Materia" />
+                android:hint="Materia o tema de estudio" />
+
+            <EditText
+                android:id="@+id/edtFechaInicioPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha inicio ejemplo: 20260601"
+                android:inputType="number"
+                android:maxLength="8" />
+
+            <EditText
+                android:id="@+id/edtFechaFinPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha fin ejemplo: 20260625"
+                android:inputType="number"
+                android:maxLength="8" />
 
             <EditText
                 android:id="@+id/edtHorasPlan"
@@ -335,12 +343,27 @@
                 android:layout_height="wrap_content"
                 android:hint="Objetivo del plan" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nivel del plan"
+                android:textSize="15sp"
+                android:textColor="#003366"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spNivelPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
             <Button
                 android:id="@+id/btnAgregarPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Agregar plan de estudio"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:backgroundTint="#003366"
                 android:textColor="#FFFFFF" />
 

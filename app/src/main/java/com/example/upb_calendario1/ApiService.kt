@@ -94,6 +94,17 @@ interface ApiService {
         @Field("id_admin") id_admin: Int
     ): Response<MateriaResponse>
 
+    @PATCH("api/materias/{id}")
+    suspend fun actualizarMateria(
+        @Path("id") id: Int,
+        @Body request: MateriaRequest
+    ): Response<MateriaResponse>
+
+    @DELETE("api/materias/{id}")
+    suspend fun eliminarMateria(
+        @Path("id") id: Int
+    ): Response<Unit>
+
     @GET("api/documentos")
     suspend fun getDocumentos(): Response<RespuestaDocumentos>
 
@@ -132,6 +143,7 @@ interface ApiService {
         @Path("id") id: Int
     ): Response<Unit>
 
+
     @GET("api/horario-materia")
     suspend fun getHorarioMateria(): Response<RespuestaHorarioMateria>
 
@@ -144,6 +156,17 @@ interface ApiService {
         @Field("aula") aula: String,
         @Field("id_materia") id_materia: Int
     ): Response<HorarioMateriaResponse>
+
+    @PATCH("api/horario-materia/{id}")
+    suspend fun actualizarHorarioMateria(
+        @Path("id") id: Int,
+        @Body request: HorarioMateriaRequest
+    ): Response<HorarioMateriaResponse>
+
+    @DELETE("api/horario-materia/{id}")
+    suspend fun eliminarHorarioMateria(
+        @Path("id") id: Int
+    ): Response<Unit>
 
     @GET("api/calendarios")
     suspend fun getCalendarios(): Response<RespuestaCalendarios>
@@ -233,7 +256,7 @@ interface ApiService {
 object RetrofitClient {
     fun create(): com.example.upb_calendario1.ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.3.162/upb_calendario/public/")
+            .baseUrl("http://172.19.133.73/upb_calendario/public/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

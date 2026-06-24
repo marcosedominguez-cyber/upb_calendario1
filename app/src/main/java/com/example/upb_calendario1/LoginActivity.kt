@@ -40,7 +40,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btnRegistro.setOnClickListener {
-            Toast.makeText(this, "Registro lo hacemos después", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intent)
         }
     }
 

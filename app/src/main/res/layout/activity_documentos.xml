@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F8FF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/txtTituloDocumentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Documentos disponibles"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#003366"
+            android:gravity="center"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/txtSubtituloDocumentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Material de apoyo según tus materias inscritas"
+            android:textSize="15sp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:id="@+id/txtEstadoDocumentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargando documentos..."
+            android:textSize="15sp"
+            android:textColor="#003366"
+            android:background="#FFFFFF"
+            android:padding="14dp"
+            android:layout_marginBottom="14dp" />
+
+        <LinearLayout
+            android:id="@+id/contenedorDocumentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <Button
+            android:id="@+id/btnVolverDocumentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:layout_marginTop="18dp"
+            android:backgroundTint="#666666"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+</ScrollView>
